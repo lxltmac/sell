@@ -17,27 +17,27 @@
       },
       score: {
         type: Number
+      }
+    },
+    computed: {
+      starType() {
+        return 'star-' + this.size
       },
-      computed: {
-        starType() {
-          return 'star-' + this.size
-        },
-        itemClasses() {
-          let result = []
-          let score = Math.floor(this.score * 2) / 2
-          let hashDecimal = score % 1 !== 0
-          let integer = Math.floor(score)
-          for (let i = 0; i < integer; i++) {
-            result.push(CLE_ON)
-          }
-          if (hashDecimal) {
-            result.push(CLE_HALF)
-          }
-          while (result.length < LENGTH) {
-            result.push(CLE_OFF)
-          }
-          return result
+      itemClasses() {
+        let result = []
+        let score = Math.floor(this.score * 2) / 2
+        let hashDecimal = score % 1 !== 0
+        let integer = Math.floor(score)
+        for (let i = 0; i < integer; i++) {
+          result.push(CLE_ON)
         }
+        if (hashDecimal) {
+          result.push(CLE_HALF)
+        }
+        while (result.length < LENGTH) {
+          result.push(CLE_OFF)
+        }
+        return result
       }
     }
   }
