@@ -35,11 +35,13 @@
         </li>
       </ul>
     </div>
+    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice" ></shopcart>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import shopcart from 'components/shopcart/shopcart'
 
   const ERR_OK = 0
   export default {
@@ -83,7 +85,7 @@
     },
     methods: {
       selectMenu(index, event) {
-        if (!event.constructor) {
+        if (!event._constructed) {
           return
         }
         let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook')
@@ -112,6 +114,9 @@
           this.listHeight.push(height)
         }
       }
+    },
+    components: {
+      shopcart
     }
   }
 </script>
@@ -206,10 +211,10 @@
             margin-bottom: 8px
           .extra
             .count
-              margin-height: 12px
+              margin-right: 12px
           .price
             font-weight: 700
-            line-weight: 24px
+            line-height: 24px
             .now
               margin-right: 8px
               font-size: 14px
